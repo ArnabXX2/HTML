@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function myFunction(){
+
+var name = document.forms["RegForm"] ["fname"].value;
+if (name==""){
+alert("Name must be filled out");
+name.focus();
+return false;
+}
+
+var address = document.forms["RegForm"] ["faddress"].value;
+if (address==""){
+alert("Address must be filled out");
+address.focus();
+return false;
+}
+
+var email = document.forms["RegForm"] ["fmail"].value;
+if (email==""){
+alert("Email Address must be filled out");
+email.focus();
+return false;
+}
+
+var number = document.forms["RegForm"] ["fnumber"].value;
+if (number==""){
+alert("Phone Number must be filled out");
+number.focus();
+return false;
+}
+
+var password = document.forms["RegForm"] ["fpassword"].value;
+if (password==""){
+alert("Password must be filled out");
+password.focus();
+return false;
+}
+
+var confirm = document.forms["RegForm"] ["fconfirm"].value;
+if (confirm==""){
+alert("Confirm Password must be filled out");
+confirm.focus();
+return false;
+}
+
+if (email.indexOf("@",0)<0){
+alert("Please enter a valid email address");
+email.focus();
+return false;
+}
+
+if (email.indexOf(".",0)<0){
+alert("Please enter a valid email address");
+email.focus();
+return false;
+}
+
+if (password!=confirm){
+alert("Password and Confirm Password must be same");
+return false;
+}
+
+
+document.getElementById("f1").innerHTML=document.RegForm.name;
+}
+</script>
+</head>
+
+
+<body>
+<h1 style="text-align : center">REGISTRATION FORM</h1>
+
+<form name="RegForm"
+onsubmit="return myFunction()"
+method="post">
+<p>Name:<input type="text" size=65 name="fname"> </p> </br>
+<p>Address:<input type="text" size=65 name="faddress"> </p> </br>
+<p>Email Address:<input type="text" size=65 name="fmail"> </p> </br>
+<p>Phone Number:<input type="text" size=65 name="fnumber"> </p> </br>
+<p>Password:<input type="text" size=65 name="fpassword"> </p> </br>
+<p>Confirm Password:<input type="text" size=65 name="fconfirm"> </p> </br>
+
+<button style="margin-right:480px" type="submit" value="Submit">Reset</button>
+<button>Submit</button>
+
+<p id="f1"></p>
+</form>
+
+</body>
+</html>
