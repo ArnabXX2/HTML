@@ -4,8 +4,11 @@
 <script>
 function myFunction(){
 
+var iserror=false;
+
 var name = document.forms["RegForm"] ["fname"].value;
 if (name==""){
+iserrror=true;
 alert("Name must be filled out");
 name.focus();
 return false;
@@ -13,6 +16,7 @@ return false;
 
 var address = document.forms["RegForm"] ["faddress"].value;
 if (address==""){
+iserrror=true;
 alert("Address must be filled out");
 address.focus();
 return false;
@@ -20,6 +24,7 @@ return false;
 
 var email = document.forms["RegForm"] ["fmail"].value;
 if (email==""){
+iserrror=true;
 alert("Email Address must be filled out");
 email.focus();
 return false;
@@ -34,6 +39,7 @@ return false;
 
 var password = document.forms["RegForm"] ["fpassword"].value;
 if (password==""){
+iserrror=true;
 alert("Password must be filled out");
 password.focus();
 return false;
@@ -41,6 +47,7 @@ return false;
 
 var confirm = document.forms["RegForm"] ["fconfirm"].value;
 if (confirm==""){
+iserrror=true;
 alert("Confirm Password must be filled out");
 confirm.focus();
 return false;
@@ -53,20 +60,45 @@ return false;
 }
 
 if (email.indexOf(".",0)<0){
+iserrror=true;
 alert("Please enter a valid email address");
 email.focus();
 return false;
 }
 
 if (password!=confirm){
+iserrror=true;
 alert("Password and Confirm Password must be same");
 return false;
 }
 
+if (iserror==false){
 
-document.getElementById("f1").innerHTML=document.RegForm.name;
+<style>
+#f1{
+display=block;
+}
+</style>
+
+document.getElementById("funame").value=name;
+document.getElementById("fuaddress").value=address;
+document.getElementById("fumail").value=email;
+document.getElementById("funumber").value=number;
+document.getElementById("fupassword").value=password;
+document.getElementById("fuconfirm").value=confirm;
+
+
+}
+
 }
 </script>
+	
+<style>
+#f1{
+display=none;
+}
+</style>
+
 </head>
 
 
@@ -76,18 +108,28 @@ document.getElementById("f1").innerHTML=document.RegForm.name;
 <form name="RegForm"
 onsubmit="return myFunction()"
 method="post">
-<p>Name:<input type="text" size=65 name="fname"> </p> </br>
-<p>Address:<input type="text" size=65 name="faddress"> </p> </br>
-<p>Email Address:<input type="text" size=65 name="fmail"> </p> </br>
-<p>Phone Number:<input type="text" size=65 name="fnumber"> </p> </br>
-<p>Password:<input type="text" size=65 name="fpassword"> </p> </br>
-<p>Confirm Password:<input type="text" size=65 name="fconfirm"> </p> </br>
+<p>Name:<input type="text" size=65 name="fname" placeholder="Type your full name"> </p> </br>
+<p>Address:<input type="text" size=65 name="faddress" placeholder="Type your address"> </p> </br>
+<p>Email Address:<input type="text" size=65 name="fmail" placeholder="Type your email id"> </p> </br>
+<p>Phone Number:<input type="text" size=65 name="fnumber" placeholder="Type your phone number"> </p> </br>
+<p>Password:<input type="text" size=65 name="fpassword" placeholder="Choose a password"> </p> </br>
+<p>Confirm Password:<input type="text" size=65 name="fconfirm" placeholder="Re-enter the password"> </p> </br>
 
-<button style="margin-right:480px" type="submit" value="Submit">Reset</button>
-<button>Submit</button>
+<button style="margin-right:480px" type="reset" value="Reset">Reset</button>
+<button type="submit" value="Submit">Submit</button>
 
-<p id="f1"></p>
 </form>
+
+<div id="f1">
+Name:<span id="funame"></span> <br>
+Address:<span id="fuaddress"></span> <br>
+Email address:<span id="fumail"></span> <br>
+Number:<span id="funumber"></span> <br>
+Password:<span id="fupassword"></span> <br>
+Confirm Password:<span id="fuconfirm"></span> <br>
+
+</div>
+
 
 </body>
 </html>
